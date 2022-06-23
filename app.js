@@ -3,6 +3,7 @@ const app = express();
 const taskRoute = require("./routes/tasks");
 const connectDB = require("./db/connect");
 const { connect } = require("mongoose");
+require("dotenv").config();
 
 const PORT = 5000;
 
@@ -12,7 +13,7 @@ app.use("/api/v1/tasks", taskRoute);
 // データベースと接続
 const start = async () => {
     try {
-        await connectDB("mongodb+srv://sorakawa101:Sorakawa.101@cluster0.da1mi.mongodb.net/?retryWrites=true&w=majority");
+        await connectDB(process.env.MONGO_URL);
         app.listen(PORT, console.log("Server Activate!"));
     } catch {
         console.log(err);
