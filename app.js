@@ -4,6 +4,7 @@ const taskRoute = require("./routes/tasks");
 const connectDB = require("./db/connect");
 const { connect } = require("mongoose");
 require("dotenv").config();
+app.use(express.json());
 
 const PORT = 5000;
 
