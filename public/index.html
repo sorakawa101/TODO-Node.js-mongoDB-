@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoApp</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <form class="task-form">
@@ -20,5 +21,43 @@
             <button type="submit" class="btn submit-btn">送信</button>
         </div>
     </form>
+
+    <section class="tasks-container">
+        <div class="tasks">
+            <!-- 知事的にタスクを置いておく -->
+            <div class="single-task">
+                <h5>
+                    <span><i class="fas fa-check-circle"></i></span>Todoタスク
+                </h5>
+                <div class="task-links">
+                    <!-- 編集リンク -->
+                    <a href="#" class="edit-link">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <!-- ゴミ箱リンク -->
+                    <a href="#" class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="single-task">
+                <h5>
+                    <span><i class="fas fa-check-circle"></i></span>Todoタスク
+                </h5>
+                <div class="task-links">
+                    <!-- 編集リンク -->
+                    <a href="#" class="edit-link">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <!-- ゴミ箱リンク -->
+                    <a href="#" class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
