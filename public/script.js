@@ -1,4 +1,6 @@
 const tasksDOM = document.querySelector(".tasks");
+const formDOM = document.querySelector(".task-form");
+const taskInputDOM = document.querySelector(".task-input");
 
 // /api/v1/tasksからタスクを読み込む
 const showTasks = async () => {
@@ -20,7 +22,7 @@ const showTasks = async () => {
                     <i class="fas fa-edit"></i>
                 </a>
                 <!-- ゴミ箱リンク -->
-                <a href="#" class="delete-btn">
+                <a href="#" class="delete-btn" data-id="${_id}">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
@@ -33,3 +35,31 @@ const showTasks = async () => {
 };
 
 showTasks();
+
+// タスクを新規作成する
+formDOM.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const name = taskInputDOM.value;
+
+    try {
+        await axios.post("/api/v1/tasks", { name : name });
+        showTasks();
+        taskInputDOM.value = "";
+    } catch (error) {
+        console.log(err);
+    }
+});
+
+// タスクを削除する
+tasksDOM.addEventListener("click", async (event) => {
+    const element = event.target;
+    if(element.parentElement.classList.contains("delete-btn")) {
+        const id = element.parentElement.dataset.id;
+        try {
+            await axios.delete(`/api/v1/tasks/${id}`);
+            showTasks();
+        } catch (error) {
+            console.log(err);
+        }
+    }
+});
